@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Add from './Add'
 
 class App extends Component {
+  constructor () {
+    super();
+
+    this.state = {
+      num: 0
+    }
+  }
+
+  inputHandler = val => {
+    this.setState({num: val})
+  }  
+
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+       <input onChange={e => this.inputHandler(e.target.value)}></input>
+       <span>
+         Add 10: <Add thisWillAdd10={this.state.num}/>
+       </span>
       </div>
     );
   }
